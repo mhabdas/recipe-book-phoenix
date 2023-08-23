@@ -12,6 +12,7 @@ defmodule RecipeBookPhoenixWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
   end
 
   scope "/", RecipeBookPhoenixWeb do
@@ -24,6 +25,12 @@ defmodule RecipeBookPhoenixWeb.Router do
   # scope "/api", RecipeBookPhoenixWeb do
   #   pipe_through :api
   # end
+
+  scope "/api", RecipeBookPhoenixWeb.Api do
+    pipe_through :api
+
+    resources "/recipes", RecipeController
+  end
 
   # Enables LiveDashboard only for development
   #
