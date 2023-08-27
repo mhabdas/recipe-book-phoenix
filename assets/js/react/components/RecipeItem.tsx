@@ -1,5 +1,5 @@
 import React from "react";
-interface RecipeItemInteface {
+export interface RecipeItemInteface {
   id: number;
   title: string;
   instructions: Array<string>;
@@ -15,9 +15,9 @@ export function RecipeItem({
   image_url,
 }: RecipeItemInteface) {
   return (
-    <div className="recipe-item">
+    <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
       <img src={image_url} alt={title} />
-      <span>{title}</span>
+      <h2 className="text-xl font-semibold mb-4">{title}</h2>
       {ingredients.map((ingredient, index) => (
         <span key={index}>{ingredient}</span>
       ))}

@@ -26,7 +26,7 @@ defmodule RecipeBookPhoenixWeb.Router do
   #   pipe_through :api
   # end
 
-  scope "/api", RecipeBookPhoenixWeb.Api do
+  scope "/api", RecipeBookPhoenixWeb do
     pipe_through :api
 
     resources "/recipes", RecipeController

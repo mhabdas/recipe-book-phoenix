@@ -26,7 +26,8 @@ config :recipe_book_phoenix, RecipeBookPhoenixWeb.Endpoint,
   secret_key_base: "Lqr4mT8zMB5Z1HDWRy7fAcT5vbbzHRH2+1N7dKnTrYP7FqUj5JidmWHg56QJudpA",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]},
   ]
 
 # ## SSL Support
