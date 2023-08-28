@@ -18,7 +18,7 @@ export function RecipeList() {
   }, []);
 
   return (
-    <div className="recipes-list-container">
+    <div className="flex">
       {recipes?.data?.length > 0 ? (
         recipes.data.map((recipe) => <RecipeItem key={recipe.id} {...recipe} />)
       ) : (

@@ -13,8 +13,10 @@ const App: React.FC<AppProps> = (props: AppProps) => {
         title="Recipe Book"
         subtitle="A simple recipe book built with Phoenix LiveView and React"
       />
-      <RecipeForm />
-      <RecipeList />
+      <div className="flex">
+        <RecipeForm />
+        <RecipeList />
+      </div>
     </div>
   );
 };
