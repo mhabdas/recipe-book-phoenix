@@ -35,6 +35,28 @@ export function RecipeForm() {
     setter((prevArray) => [...prevArray, ""]);
   };
 
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    const title = event.currentTarget.title.value;
+    const image_url = event.currentTarget.image.value;
+    const response = await fetch("http://localhost:4000/api/recipes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        recipe: {
+          title,
+          image_url,
+          ingredients,
+          instructions,
+        },
+      }),
+    });
+    const responseJson = await response.json();
+    console.log(responseJson);
+  };
+
   return (
     <>
       <div className="max-w-md mx-left p-6 bg-white rounded-md shadow-md">
@@ -109,7 +131,7 @@ export function RecipeForm() {
           </label>
           <input type="url" id="image" className="input" required />
         </div>
-        <button className="btn btn-blue">Add new Recipe</button>
+        <button className="btn btn-blue" type="submit" onClick={handleSubmit}>Add new Recipe</button>
       </div>
       <hr className="my-12" />
     </>

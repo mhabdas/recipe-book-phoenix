@@ -1,10 +1,15 @@
 import React from "react";
-export interface RecipeItemInteface {
+
+export interface RecipeItemInterface {
   id: number;
   title: string;
   instructions: Array<string>;
   ingredients: Array<string>;
   image_url: string;
+}
+export interface RecipeItemPropInterface extends RecipeItemInterface {
+  deleteRecipe: (id: number) => void;
+  editRecipe: (id: number) => void;
 }
 
 export function RecipeItem({
@@ -13,11 +18,17 @@ export function RecipeItem({
   instructions,
   ingredients,
   image_url,
-}: RecipeItemInteface) {
+  deleteRecipe,
+  editRecipe,
+}: RecipeItemPropInterface) {
+  const handleDelete = async (id: number) => {
+    deleteRecipe(id);
+  };
+
   return (
     <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
-      <img src={image_url} alt={title} />
-      <h2 className="text-xl font-semibold mb-4">{title}</h2>
+      <img className="recipe-img" src={image_url} alt={title} />
+      <h2 className="text-xl font-semibold mb-4 my-4">{title}</h2>
       <ul className="list-disc ml-4">
         {ingredients.map((ingredient, index) => (
           <li key={index}>{ingredient}</li>
@@ -29,8 +40,12 @@ export function RecipeItem({
         ))}
       </ul>
       <div className="my-4">
-        <button className="btn btn-blue mr-2">Edit</button>
-        <button className="btn btn-blue">Delete</button>
+        <button className="btn btn-blue mr-2" onClick={() => editRecipe(id)}>
+          Edit
+        </button>
+        <button className="btn btn-blue" onClick={() => handleDelete(id)}>
+          Delete
+        </button>
       </div>
     </div>
   );
